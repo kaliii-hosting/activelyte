@@ -1,0 +1,15 @@
+# Netlify build configuration for the Activelyte Next.js app.
+# The @netlify/plugin-nextjs runtime handles SSR + Route Handlers (the admin
+# API runs as Netlify Functions). Env vars (Firebase config + admin secrets)
+# are set in the Netlify dashboard / via `netlify env:set`, never committed.
+
+[build]
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "22"
+  # Firebase deps pull in optional native bits; keep installs lean/deterministic.
+  NPM_FLAGS = "--no-audit --no-fund"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
