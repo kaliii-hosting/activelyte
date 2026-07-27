@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+:root {
+  --background: #000000;
+  --foreground: #ededed;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html,
+body {
+  background: #000000;
+  color: var(--foreground);
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Responsive defaults so no content forces horizontal scroll on phones/tablets. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+}
+/* Wide content (tables, code, pre) scrolls within itself, never the page. */
+pre,
+table {
+  max-width: 100%;
+  overflow-x: auto;
+}

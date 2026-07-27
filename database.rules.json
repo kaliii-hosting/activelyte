@@ -1,0 +1,20 @@
+{
+  "rules": {
+    "status": {
+      "$uid": {
+        ".read": "auth != null",
+        ".write": "auth != null && auth.uid == $uid",
+        ".validate": "newData.hasChildren(['state', 'lastChanged']) && newData.child('state').val().matches(/^(online|offline)$/)"
+      }
+    },
+    "typing": {
+      "$cid": {
+        ".read": "auth != null",
+        "$uid": {
+          ".write": "auth != null && auth.uid == $uid",
+          ".validate": "newData.isNumber() || !newData.exists()"
+        }
+      }
+    }
+  }
+}
